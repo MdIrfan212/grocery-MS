@@ -1,0 +1,28 @@
+{
+    "reports": {
+        "fin_20250906_161237": {
+            "type": "profit_loss",
+            "period": "month",
+            "start_date": "2025-09-01",
+            "end_date": "2025-09-30",
+            "total_revenue": 2653,
+            "estimated_costs": 1591.8,
+            "gross_profit": 1061.2,
+            "generated_by": "Saadman Sakib Saad",
+            "generated_at": "2025-09-06 16:12:37"
+        }
+    },
+    "loyalty_config": {
+        "points_per_purchase": 1,
+        "points_value": 0.01,
+        "min_redemption": 100,
+        "tiers": {
+            "bronze": 0,
+            "silver": 500,
+            "gold": 1000,
+            "platinum": 2000
+        },
+        "updated_by": "Saadman Sakib Saad",
+        "updated_at": "2025-09-06 16:14:40"
+    }
+}

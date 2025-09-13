@@ -1,0 +1,14 @@
+[
+    {
+        "id": "ruleaefcc97d",
+        "name": "It's my choice",
+        "type": "fixed_increase",
+        "value": 2,
+        "target": "all",
+        "condition": "always",
+        "competitor_monitoring": true,
+        "status": "active",
+        "created_by": "Saadman Sakib Saad",
+        "created_at": "2025-09-06 16:13:43"
+    }
+]

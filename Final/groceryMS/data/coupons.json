@@ -1,0 +1,13 @@
+[
+    {
+        "code": "#1000",
+        "type": "fixed",
+        "value": 5,
+        "min_order": 2,
+        "max_uses": 2,
+        "valid_until": "2025-09-07",
+        "created_by": "Saadman Sakib Saad",
+        "created_at": "2025-09-06 16:15:30",
+        "usage_count": 0
+    }
+]

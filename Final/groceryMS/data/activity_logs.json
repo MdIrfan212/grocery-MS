@@ -1,0 +1,32 @@
+[
+    {
+        "date": "2025-09-06 10:30:15",
+        "user": "System",
+        "action": "Admin panel initialized"
+    },
+    {
+        "date": "2025-09-05 21:04:56",
+        "user": "Saadman Sakib Saad",
+        "action": "Generated report: financial_report"
+    },
+    {
+        "date": "2025-09-05 21:07:09",
+        "user": "Saadman Sakib Saad",
+        "action": "Generated report: customer_activity"
+    },
+    {
+        "date": "2025-09-05 21:07:50",
+        "user": "Saadman Sakib Saad",
+        "action": "Generated report: inventory_report"
+    },
+    {
+        "date": "2025-09-05 21:10:58",
+        "user": "Saadman Sakib Saad",
+        "action": "Generated report: sales_summary"
+    },
+    {
+        "date": "2025-09-05 21:15:02",
+        "user": "Saadman Sakib Saad",
+        "action": "Generated report: Customer Activity Report (2025-08-29 to 2025-09-05)"
+    }
+]

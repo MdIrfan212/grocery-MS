@@ -1,0 +1,542 @@
+[
+    {
+        "id": 1,
+        "name": "Apple",
+        "category": "Fruits",
+        "subcategory": "Fresh",
+        "price": 152.5,
+        "stock": 107,
+        "image": "Apple.png"
+    },
+    {
+        "id": 2,
+        "name": "Banana",
+        "category": "Fruits",
+        "subcategory": "Fresh",
+        "price": 151.2,
+        "stock": 120,
+        "image": "Banana.png"
+    },
+    {
+        "id": 3,
+        "name": "Orange",
+        "category": "Fruits",
+        "subcategory": "Citrus",
+        "price": 153,
+        "stock": 80,
+        "image": "Orange.png"
+    },
+    {
+        "id": 4,
+        "name": "Mango",
+        "category": "Fruits",
+        "subcategory": "Tropical",
+        "price": 154,
+        "stock": 60,
+        "image": "Mango.png"
+    },
+    {
+        "id": 5,
+        "name": "Potato",
+        "category": "Vegetables",
+        "subcategory": "Root",
+        "price": 151,
+        "stock": 200,
+        "image": "Potato.png"
+    },
+    {
+        "id": 6,
+        "name": "Tomato",
+        "category": "Vegetables",
+        "subcategory": "Fresh",
+        "price": 151.8,
+        "stock": 150,
+        "image": "Tomato.png"
+    },
+    {
+        "id": 7,
+        "name": "Carrot",
+        "category": "Vegetables",
+        "subcategory": "Root",
+        "price": 151.5,
+        "stock": 140,
+        "image": "Carrot.png"
+    },
+    {
+        "id": 8,
+        "name": "Onion",
+        "category": "Vegetables",
+        "subcategory": "Bulb",
+        "price": 151.3,
+        "stock": 160,
+        "image": "Onion.png"
+    },
+    {
+        "id": 9,
+        "name": "Milk",
+        "category": "Dairy",
+        "subcategory": "Fresh",
+        "price": 151.5,
+        "stock": 90,
+        "image": "Milk.png"
+    },
+    {
+        "id": 10,
+        "name": "Cheese",
+        "category": "Dairy",
+        "subcategory": "Processed",
+        "price": 153.5,
+        "stock": 70,
+        "image": "Cheese.png"
+    },
+    {
+        "id": 11,
+        "name": "Yogurt",
+        "category": "Dairy",
+        "subcategory": "Fermented",
+        "price": 152,
+        "stock": 100,
+        "image": "Yogurt.png"
+    },
+    {
+        "id": 12,
+        "name": "Butter",
+        "category": "Dairy",
+        "subcategory": "Processed",
+        "price": 154,
+        "stock": 60,
+        "image": "Butter.png"
+    },
+    {
+        "id": 13,
+        "name": "Bread",
+        "category": "Bakery",
+        "subcategory": "Loaf",
+        "price": 152,
+        "stock": 100,
+        "image": "Bread.png"
+    },
+    {
+        "id": 14,
+        "name": "Croissant",
+        "category": "Bakery",
+        "subcategory": "Pastry",
+        "price": 152.5,
+        "stock": 50,
+        "image": "Croissant.png"
+    },
+    {
+        "id": 15,
+        "name": "Donut",
+        "category": "Bakery",
+        "subcategory": "Pastry",
+        "price": 151.5,
+        "stock": 70,
+        "image": "Donut.png"
+    },
+    {
+        "id": 16,
+        "name": "Cake",
+        "category": "Bakery",
+        "subcategory": "Sweet",
+        "price": 155,
+        "stock": 39,
+        "image": "Cake.png"
+    },
+    {
+        "id": 17,
+        "name": "Juice",
+        "category": "Beverages",
+        "subcategory": "Soft Drink",
+        "price": 152,
+        "stock": 120,
+        "image": "Juice.png"
+    },
+    {
+        "id": 18,
+        "name": "Tea",
+        "category": "Beverages",
+        "subcategory": "Hot Drink",
+        "price": 151.5,
+        "stock": 110,
+        "image": "Tea.png"
+    },
+    {
+        "id": 19,
+        "name": "Coffee",
+        "category": "Beverages",
+        "subcategory": "Hot Drink",
+        "price": 153,
+        "stock": 90,
+        "image": "Coffee.png"
+    },
+    {
+        "id": 20,
+        "name": "Soda",
+        "category": "Beverages",
+        "subcategory": "Soft Drink",
+        "price": 151.2,
+        "stock": 119,
+        "image": "Soda.png"
+    },
+    {
+        "id": 21,
+        "name": "Chips",
+        "category": "Snacks",
+        "subcategory": "Packaged",
+        "price": 151.5,
+        "stock": 150,
+        "image": "Chips.png"
+    },
+    {
+        "id": 22,
+        "name": "Cookies",
+        "category": "Snacks",
+        "subcategory": "Packaged",
+        "price": 152,
+        "stock": 80,
+        "image": "Cookies.png"
+    },
+    {
+        "id": 23,
+        "name": "Popcorn",
+        "category": "Snacks",
+        "subcategory": "Packaged",
+        "price": 151.8,
+        "stock": 90,
+        "image": "Popcorn.png"
+    },
+    {
+        "id": 24,
+        "name": "Nuts",
+        "category": "Snacks",
+        "subcategory": "Dry",
+        "price": 153.5,
+        "stock": 70,
+        "image": "Nuts.png"
+    },
+    {
+        "id": 25,
+        "name": "Ice Cream",
+        "category": "Frozen",
+        "subcategory": "Sweet",
+        "price": 154,
+        "stock": 50,
+        "image": "IceCream.png"
+    },
+    {
+        "id": 26,
+        "name": "Frozen Pizza",
+        "category": "Frozen",
+        "subcategory": "Meal",
+        "price": 155,
+        "stock": 40,
+        "image": "FrozenPizza.png"
+    },
+    {
+        "id": 27,
+        "name": "Frozen Vegetables",
+        "category": "Frozen",
+        "subcategory": "Veggies",
+        "price": 153,
+        "stock": 60,
+        "image": "FrozenVegetables.png"
+    },
+    {
+        "id": 28,
+        "name": "Frozen Fish",
+        "category": "Frozen",
+        "subcategory": "Seafood",
+        "price": 156,
+        "stock": 30,
+        "image": "FrozenFish.png"
+    },
+    {
+        "id": 29,
+        "name": "Chicken",
+        "category": "Meat",
+        "subcategory": "Poultry",
+        "price": 157,
+        "stock": 60,
+        "image": "Chicken.png"
+    },
+    {
+        "id": 30,
+        "name": "Beef",
+        "category": "Meat",
+        "subcategory": "Red Meat",
+        "price": 158,
+        "stock": 50,
+        "image": "Beef.png"
+    },
+    {
+        "id": 31,
+        "name": "Lamb",
+        "category": "Meat",
+        "subcategory": "Red Meat",
+        "price": 159,
+        "stock": 40,
+        "image": "Lamb.png"
+    },
+    {
+        "id": 32,
+        "name": "Turkey",
+        "category": "Meat",
+        "subcategory": "Poultry",
+        "price": 156.5,
+        "stock": 34,
+        "image": "Turkey.png"
+    },
+    {
+        "id": 33,
+        "name": "Shrimp",
+        "category": "Seafood",
+        "subcategory": "Shellfish",
+        "price": 160,
+        "stock": 25,
+        "image": "Shrimp.png"
+    },
+    {
+        "id": 34,
+        "name": "Salmon",
+        "category": "Seafood",
+        "subcategory": "Fish",
+        "price": 162,
+        "stock": 20,
+        "image": "Salmon.png"
+    },
+    {
+        "id": 35,
+        "name": "Crab",
+        "category": "Seafood",
+        "subcategory": "Shellfish",
+        "price": 165,
+        "stock": 15,
+        "image": "Crab.png"
+    },
+    {
+        "id": 36,
+        "name": "Tuna",
+        "category": "Seafood",
+        "subcategory": "Fish",
+        "price": 161,
+        "stock": 17,
+        "image": "Tuna.png"
+    },
+    {
+        "id": 37,
+        "name": "Rice",
+        "category": "Grains",
+        "subcategory": "Staple",
+        "price": 152,
+        "stock": 200,
+        "image": "Rice.png"
+    },
+    {
+        "id": 38,
+        "name": "Wheat",
+        "category": "Grains",
+        "subcategory": "Staple",
+        "price": 151.5,
+        "stock": 151,
+        "image": "Wheat.png"
+    },
+    {
+        "id": 39,
+        "name": "Oats",
+        "category": "Grains",
+        "subcategory": "Cereal",
+        "price": 152.5,
+        "stock": 100,
+        "image": "Oats.png"
+    },
+    {
+        "id": 40,
+        "name": "Barley",
+        "category": "Grains",
+        "subcategory": "Cereal",
+        "price": 151.8,
+        "stock": 120,
+        "image": "Barley.png"
+    },
+    {
+        "id": 41,
+        "name": "Salt",
+        "category": "Spices",
+        "subcategory": "Basic",
+        "price": 150.5,
+        "stock": 300,
+        "image": "Salt.png"
+    },
+    {
+        "id": 42,
+        "name": "Pepper",
+        "category": "Spices",
+        "subcategory": "Basic",
+        "price": 151,
+        "stock": 200,
+        "image": "Pepper.png"
+    },
+    {
+        "id": 43,
+        "name": "Cinnamon",
+        "category": "Spices",
+        "subcategory": "Sweet",
+        "price": 152,
+        "stock": 80,
+        "image": "Cinnamon.png"
+    },
+    {
+        "id": 44,
+        "name": "Turmeric",
+        "category": "Spices",
+        "subcategory": "Basic",
+        "price": 151.5,
+        "stock": 100,
+        "image": "Turmeric.png"
+    },
+    {
+        "id": 45,
+        "name": "Ketchup",
+        "category": "Condiments",
+        "subcategory": "Sauce",
+        "price": 152.5,
+        "stock": 90,
+        "image": "Ketchup.png"
+    },
+    {
+        "id": 46,
+        "name": "Mayonnaise",
+        "category": "Condiments",
+        "subcategory": "Sauce",
+        "price": 153,
+        "stock": 70,
+        "image": "Mayonnaise.png"
+    },
+    {
+        "id": 47,
+        "name": "Mustard",
+        "category": "Condiments",
+        "subcategory": "Sauce",
+        "price": 152,
+        "stock": 80,
+        "image": "Mustard.png"
+    },
+    {
+        "id": 48,
+        "name": "Soy Sauce",
+        "category": "Condiments",
+        "subcategory": "Sauce",
+        "price": 152.2,
+        "stock": 60,
+        "image": "SoySauce.png"
+    },
+    {
+        "id": 49,
+        "name": "Shampoo",
+        "category": "Personal Care",
+        "subcategory": "Hair",
+        "price": 155,
+        "stock": 40,
+        "image": "Shampoo.png"
+    },
+    {
+        "id": 50,
+        "name": "Soap",
+        "category": "Personal Care",
+        "subcategory": "Body",
+        "price": 151.5,
+        "stock": 100,
+        "image": "Soap.png"
+    },
+    {
+        "id": 51,
+        "name": "Toothpaste",
+        "category": "Personal Care",
+        "subcategory": "Oral",
+        "price": 152,
+        "stock": 80,
+        "image": "Toothpaste.png"
+    },
+    {
+        "id": 52,
+        "name": "Lotion",
+        "category": "Personal Care",
+        "subcategory": "Skin",
+        "price": 154,
+        "stock": 50,
+        "image": "Lotion.png"
+    },
+    {
+        "id": 53,
+        "name": "Detergent",
+        "category": "Household",
+        "subcategory": "Cleaning",
+        "price": 153,
+        "stock": 90,
+        "image": "Detergent.png"
+    },
+    {
+        "id": 54,
+        "name": "Dish Soap",
+        "category": "Household",
+        "subcategory": "Cleaning",
+        "price": 152,
+        "stock": 80,
+        "image": "DishSoap.png"
+    },
+    {
+        "id": 55,
+        "name": "Tissue",
+        "category": "Household",
+        "subcategory": "Paper",
+        "price": 151.5,
+        "stock": 100,
+        "image": "Tissue.png"
+    },
+    {
+        "id": 56,
+        "name": "Broom",
+        "category": "Household",
+        "subcategory": "Cleaning",
+        "price": 154,
+        "stock": 40,
+        "image": "Broom.png"
+    },
+    {
+        "id": 57,
+        "name": "Diapers",
+        "category": "Baby Care",
+        "subcategory": "Essentials",
+        "price": 160,
+        "stock": 30,
+        "image": "Diapers.png"
+    },
+    {
+        "id": 58,
+        "name": "Baby Lotion",
+        "category": "Baby Care",
+        "subcategory": "Skin",
+        "price": 155,
+        "stock": 40,
+        "image": "BabyLotion.png"
+    },
+    {
+        "id": 59,
+        "name": "Baby Powder",
+        "category": "Baby Care",
+        "subcategory": "Skin",
+        "price": 154,
+        "stock": 49,
+        "image": "BabyPowder.png"
+    },
+    {
+        "id": 60,
+        "name": "Baby Food",
+        "category": "Baby Care",
+        "subcategory": "Nutrition",
+        "price": 156,
+        "stock": 11,
+        "image": "BabyFood.png"
+    }
+]

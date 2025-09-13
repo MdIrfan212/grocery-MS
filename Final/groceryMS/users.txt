@@ -1,0 +1,14 @@
+Saadman Sakib Saad|saadsakib09@gmail.com|123456|admin|approved
+Saadman Sakib Saad|saadsakib09@gmail.com|123456|admin|approved
+Minhajul Karim|minhajkarim01@gmail.com|123456|admin|approved
+Minhajul Karim|minhajkarim100@gmail.com|789456|manager|approved
+Irfan|ifranhossain500@gmail.com|852963|customer|approved
+
+Suhaib Ahmed|suhaid999@gmail.com|000000|admin|pending
+Suhaib Ahmed|suhaid999@gmail.com|000000|admin
+Rezoan Ahmad|rezoanahmadr@gmail.com|123456|employee
+sifat|rezoanahmadr11@gmail.com|123456|manager
+sifat ahmad|rezoanahmadr12@gmail.com|123456|admin
+admin|rezoanahmadr123@gmail.com|123456|employee
+rad|rezoanahmadr1111@gmail.com|123456|customer
+ Rezoan|rezoan11@gmail.com|123456|employeehimu|admin@grocery.com|ADMIN123|admin
