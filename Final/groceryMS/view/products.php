@@ -5,16 +5,9 @@ $__candidates = [
     __DIR__ . '/model/compat.php',
     __DIR__ . '/../../model/compat.php',
 ];
-foreach ($__candidates as $__p) { if (file_exists($__p)) { require_once $__p; break; } }
-?>
 <?php 
 $cat = $_GET['cat'] ?? '';
 
-/**
- * Resolve an image by base name with common extensions.
- * Looks in ../images/products/<basename>.(png|jpg|jpeg|webp|gif)
- * Returns relative path for <img src="...">, or empty string if not found.
- */
 function resolve_image($basename) {
     $dir = __DIR__ . '/../images/products/';
     $rel = '../images/products/';
@@ -25,7 +18,6 @@ function resolve_image($basename) {
     }
     return '';
 }
-
 
 // Function to get category color
 function get_category_color($category) {
@@ -47,7 +39,6 @@ function get_category_color($category) {
     return $colors[$category] ?? '#DDDDDD';
 }
 
-// Helper function to adjust color brightness
 function adjust_brightness($hex, $steps) {
     $steps = max(-255, min(255, $steps));
     $hex = str_replace('#', '', $hex);
@@ -71,7 +62,6 @@ function adjust_brightness($hex, $steps) {
     return '#'.$r_hex.$g_hex.$b_hex;
 }
 
-// safe is_admin helper (no big changes to session logic)
 if (!function_exists('is_admin')) {
     function is_admin() {
         return (isset($_SESSION) && ($_SESSION['role'] ?? '') === 'admin');
@@ -83,12 +73,12 @@ if (!function_exists('is_admin')) {
   <h3>Products</h3>
 
 <?php
-    // Load categories from categories.json if it exists, otherwise build from products
+  
     $categoriesFile = dirname(__DIR__) . "/data/categories.json";
     if (file_exists($categoriesFile)) {
         $cats = json_decode(file_get_contents($categoriesFile), true);
     } else {
-        // Build from products as fallback
+      
         $cats = [];
         foreach ($products as $pp) {
             $c = $pp['category'] ?? 'Other';
@@ -262,51 +252,82 @@ if (!function_exists('is_admin')) {
               Stock: <?= (int)$p['stock'] ?>
             </div>
 
-            <div class="actions">
-              <!-- Sell Form -->
-              <form method="post" style="display:inline-block;">
-                <input type="hidden" name="action" value="create_order">
-                <input type="hidden" name="product_id" value="<?= htmlspecialchars($p['id']) ?>">
-                <input type="number" name="qty" value="1" min="1" class="qty">
-                <button type="submit" class="btn">Sell</button>
-              </form>
+        
+<?php
+$avgRating = get_average_rating($p['id']);
+$ratingCount = get_rating_count($p['id']);
+?>
+<div style="display: flex; align-items: center; gap: 4px; margin: 8px 0;">
+    <?php for ($i = 1; $i <= 5; $i++): ?>
+        <span style="color: <?= $i <= round($avgRating) ? '#ff9800' : '#ddd' ?>; font-size: 0.9em;">★</span>
+    <?php endfor; ?>
+    <?php if ($ratingCount > 0): ?>
+        <span style="font-size: 0.8em; color: #666;">(<?= $avgRating ?>)</span>
+    <?php endif; ?>
+</div>
 
-              <!-- Manager/Admin: Edit product (opens modal) -->
-              <?php if (function_exists('can_manage') && can_manage()): ?>
-                <button class="btn ghost small edit-btn"
-                  data-id="<?= htmlspecialchars($p['id']) ?>"
-                  data-name="<?= htmlspecialchars($p['name']) ?>"
-                  data-price="<?= htmlspecialchars($p['price']) ?>"
-                  data-stock="<?= htmlspecialchars($p['stock']) ?>"
-                  data-category="<?= htmlspecialchars($p['category']) ?>"
-                  data-subcategory="<?= htmlspecialchars($p['subcategory']) ?>"
-                  data-image="<?= htmlspecialchars($p['image'] ?? '') ?>"
-                >Edit</button>
+<div class="actions">
 
-                <!-- Delete product (manager allowed to delete products) -->
-                <form method="post" style="display:inline-block;margin-left:6px">
-                  <input type="hidden" name="action" value="delete_product">
-                  <input type="hidden" name="id" value="<?= htmlspecialchars($p['id']) ?>">
-                  <button type="submit" class="btn ghost small" onclick="return confirm('Delete product <?= htmlspecialchars(addslashes($p['name'])) ?>?');">Delete</button>
-                </form>
-              <?php endif; ?>
+  <form method="post" style="display:inline-block;">
+    <input type="hidden" name="action" value="create_order">
+    <input type="hidden" name="product_id" value="<?= htmlspecialchars($p['id']) ?>">
+    <input type="number" name="qty" value="1" min="1" class="qty">
+    <button type="submit" class="btn">
+         <?= ($role === 'customer') ? 'Add to Cart' : 'Sell' ?>
+    </button>
+  </form>
+  
+  <?php if ($role === 'customer'): ?>
+    <form method="post" style="display:inline-block; margin-left:6px">
+      <input type="hidden" name="action" value="add_to_wishlist">
+      <input type="hidden" name="product_id" value="<?= htmlspecialchars($p['id']) ?>">
+      <button type="submit" class="btn small" style="background: #ff4081; color: white;">
+        Wishlist
+      </button>
+    </form>
+  <?php endif; ?>
+  
+  <!-- View Reviews Link -->
+  <a href="dashboard.php?page=product_reviews&id=<?= htmlspecialchars($p['id']) ?>" class="btn small ghost" style="margin-left: 6px;">
+    Reviews (<?= $ratingCount ?>)
+  </a>
+  
+  <!-- Manager/Admin: Edit product (opens modal) -->
+  <?php if (function_exists('can_manage') && can_manage()): ?>
+    <button class="btn ghost small edit-btn"
+      data-id="<?= htmlspecialchars($p['id']) ?>"
+      data-name="<?= htmlspecialchars($p['name']) ?>"
+      data-price="<?= htmlspecialchars($p['price']) ?>"
+      data-stock="<?= htmlspecialchars($p['stock']) ?>"
+      data-category="<?= htmlspecialchars($p['category']) ?>"
+      data-subcategory="<?= htmlspecialchars($p['subcategory']) ?>"
+      data-image="<?= htmlspecialchars($p['image'] ?? '') ?>"
+    >Edit</button>
 
-              <!-- Stock Adjust (manager only) -->
-              <?php if (function_exists('can_manage') && can_manage()): ?>
-                <form method="post" style="display:inline-block;margin-left:4px">
-                  <input type="hidden" name="action" value="adjust_stock">
-                  <input type="hidden" name="id" value="<?= htmlspecialchars($p['id']) ?>">
-                  <input type="hidden" name="delta" value="-1">
-                  <button class="btn ghost small">-1</button>
-                </form>
-                <form method="post" style="display:inline-block;margin-left:4px">
-                  <input type="hidden" name="action" value="adjust_stock">
-                  <input type="hidden" name="id" value="<?= htmlspecialchars($p['id']) ?>">
-                  <input type="hidden" name="delta" value="1">
-                  <button class="btn ghost small">+1</button>
-                </form>
-              <?php endif; ?>
-            </div>
+    <!-- Delete product (manager allowed to delete products) -->
+    <form method="post" style="display:inline-block;margin-left:6px">
+      <input type="hidden" name="action" value="delete_product">
+      <input type="hidden" name="id" value="<?= htmlspecialchars($p['id']) ?>">
+      <button type="submit" class="btn ghost small" onclick="return confirm('Delete product <?= htmlspecialchars(addslashes($p['name'])) ?>?');">Delete</button>
+    </form>
+  <?php endif; ?>
+
+  <!-- Stock Adjust (manager only) -->
+  <?php if (function_exists('can_manage') && can_manage()): ?>
+    <form method="post" style="display:inline-block;margin-left:4px">
+      <input type="hidden" name="action" value="adjust_stock">
+      <input type="hidden" name="id" value="<?= htmlspecialchars($p['id']) ?>">
+      <input type="hidden" name="delta" value="-1">
+      <button class="btn ghost small">-1</button>
+    </form>
+    <form method="post" style="display:inline-block;margin-left:4px">
+      <input type="hidden" name="action" value="adjust_stock">
+      <input type="hidden" name="id" value="<?= htmlspecialchars($p['id']) ?>">
+      <input type="hidden" name="delta" value="1">
+      <button class="btn ghost small">+1</button>
+    </form>
+  <?php endif; ?>
+</div>
           </div>
         <?php endforeach; ?>
       </div>
@@ -357,9 +378,8 @@ if (!function_exists('is_admin')) {
 </div>
 
 <script>
-  // Edit modal behavior
   document.addEventListener('click', function(e){
-    // Open edit modal
+    
     if (e.target && e.target.classList.contains('edit-btn')) {
       const b = e.target;
       document.getElementById('edit_id').value = b.dataset.id || '';
