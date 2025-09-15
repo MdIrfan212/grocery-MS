@@ -5,18 +5,13 @@ $__candidates = [
     __DIR__ . '/model/compat.php',
     __DIR__ . '/../../model/compat.php',
 ];
-foreach ($__candidates as $__p) { if (file_exists($__p)) { require_once $__p; break; } }
-?>
 <?php
-// product_reviews.php - Product reviews and ratings page
 $productId = $_GET['id'] ?? '';
 
 if (empty($productId)) {
     header("Location: dashboard.php?page=products");
     exit;
 }
-
-// Find the product
 $product = null;
 foreach ($products as $p) {
     if ($p['id'] == $productId) {
@@ -30,17 +25,13 @@ if (!$product) {
     exit;
 }
 
-// Get reviews for this product
 $reviews = get_product_reviews($productId);
 $averageRating = get_average_rating($productId);
 $ratingCount = get_rating_count($productId);
 
-// Get user's review if exists
 $userReview = get_user_review($name, $productId);
 ?>
-
 <div class="panel">
-    <!-- Product Header -->
     <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
         <img src="<?= imgPath($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>" 
              style="width: 100px; height: 100px; object-fit: cover; border-radius: 12px; border: 2px solid #f8f9fa;">
@@ -52,12 +43,11 @@ $userReview = get_user_review($name, $productId);
                 </span>
             </div>
             <div style="color: #34495e; font-size: 15px;">
-                Price: <strong style="color: #e74c3c;">৳<?= number_format($product['price'], 2) ?></strong>
+                Price: <strong style="color: #e74c3c;"><?= number_format($product['price'], 2) ?></strong>
             </div>
         </div>
     </div>
 
-    <!-- Rating Summary -->
     <div class="card" style="padding: 25px; margin-bottom: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 15px;">
         <div style="display: flex; align-items: center; gap: 30px;">
             <div style="text-align: center;">
@@ -104,8 +94,6 @@ $userReview = get_user_review($name, $productId);
             </div>
         </div>
     </div>
-
-    <!-- Review Form -->
     <div class="card" style="padding: 25px; margin-bottom: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
         <h3 style="margin: 0 0 20px 0; color: #2c3e50; display: flex; align-items: center; gap: 10px;">
             <span style="background: #3498db; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px;">✏️</span>
@@ -116,7 +104,6 @@ $userReview = get_user_review($name, $productId);
             <input type="hidden" name="action" value="add_review">
             <input type="hidden" name="product_id" value="<?= htmlspecialchars($productId) ?>">
             
-            <!-- Rating -->
             <div style="margin-bottom: 20px;">
                 <label style="display: block; margin-bottom: 10px; font-weight: 600; color: #34495e;">Your Rating</label>
                 <div style="display: flex; gap: 5px;" id="starRating">
@@ -133,7 +120,6 @@ $userReview = get_user_review($name, $productId);
                 </div>
             </div>
             
-            <!-- Comment -->
             <div style="margin-bottom: 20px;">
                 <label style="display: block; margin-bottom: 10px; font-weight: 600; color: #34495e;">Your Review</label>
                 <textarea name="comment" placeholder="Share your honest thoughts about this product. What did you like? What could be better?" 
@@ -165,7 +151,6 @@ $userReview = get_user_review($name, $productId);
         <?php endif; ?>
     </div>
 
-    <!-- Reviews List -->
     <div>
         <h3 style="margin: 0 0 20px 0; color: #2c3e50; display: flex; align-items: center; gap: 10px;">
             <span style="background: #e74c3c; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px;">👥</span>
@@ -182,7 +167,7 @@ $userReview = get_user_review($name, $productId);
             <div style="display: flex; flex-direction: column; gap: 20px;">
                 <?php foreach ($reviews as $review): ?>
                 <div class="card" style="padding: 20px; border-radius: 12px; background: white; border: 1px solid #ecf0f1; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-                    <!-- Review Header -->
+                
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div style="width: 40px; height: 40px; background: #3498db; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 16px;">
@@ -201,12 +186,11 @@ $userReview = get_user_review($name, $productId);
                         </div>
                     </div>
                     
-                    <!-- Review Content -->
+                
                     <div style="color: #2c3e50; line-height: 1.6; margin-bottom: 16px; padding: 0 8px;">
                         <?= nl2br(htmlspecialchars($review['comment'])) ?>
                     </div>
                     
-                    <!-- Actions -->
                     <?php if ($review['user'] === $name || is_admin()): ?>
                     <div style="text-align: right; border-top: 1px solid #ecf0f1; padding-top: 12px;">
                         <form method="post" style="display: inline;">
@@ -216,7 +200,7 @@ $userReview = get_user_review($name, $productId);
                             <button type="submit" class="btn small ghost" 
                                     style="color: #e74c3c; border-color: #e74c3c; padding: 6px 12px; font-size: 13px;"
                                     onclick="return confirm('Are you sure you want to delete this review?');">
-                                🗑️ Delete
+                            
                             </button>
                         </form>
                     </div>
@@ -229,7 +213,6 @@ $userReview = get_user_review($name, $productId);
 </div>
 
 <script>
-// Star rating functionality
 function hoverStars(rating) {
     const stars = document.querySelectorAll('#starRating span');
     stars.forEach((star, index) => {
@@ -247,19 +230,16 @@ function resetStars() {
     });
 }
 
-// Initialize stars on page load
 document.addEventListener('DOMContentLoaded', function() {
     resetStars();
 });
 
-// Click to select rating
 document.querySelectorAll('#starRating input').forEach(input => {
     input.addEventListener('change', function() {
         resetStars();
     });
 });
 
-// Delete review confirmation
 document.getElementById('deleteReviewBtn')?.addEventListener('click', function() {
     if (confirm('Are you sure you want to delete your review? This action cannot be undone.')) {
         document.getElementById('deleteReviewForm').submit();
@@ -268,8 +248,17 @@ document.getElementById('deleteReviewBtn')?.addEventListener('click', function()
 </script>
 
 <style>
+/* Fix for layout issues */
+.panel {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 .card {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .card:hover {
@@ -292,5 +281,20 @@ document.getElementById('deleteReviewBtn')?.addEventListener('click', function()
 .btn.ghost:hover {
     background: #e74c3c;
     color: white;
+}
+@media (max-width: 768px) {
+    .panel {
+        padding: 15px;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+    
+    .rating-summary {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
 }
 </style>
