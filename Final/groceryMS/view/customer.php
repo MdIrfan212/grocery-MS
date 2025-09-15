@@ -1,36 +1,33 @@
 <?php
-// Auto-added DB bootstrap (keeps your design, replaces JSON with MySQL)
 $__candidates = [
     __DIR__ . '/../model/compat.php',
     __DIR__ . '/model/compat.php',
     __DIR__ . '/../../model/compat.php',
 ];
-foreach ($__candidates as $__p) { if (file_exists($__p)) { require_once $__p; break; } }
-?>
 <div class="panel" style="position: relative; overflow: hidden;">
   <div style="position: absolute; top: 0; right: 0; width: 200px; height: 200px; background: linear-gradient(135deg, #4caf50, #8bc34a); opacity: 0.1; border-radius: 50%; transform: translate(100px, -100px);"></div>
   
   <h3 style="color: #2e7d32; position: relative; display: inline-block;">
-    <span style="display: inline-block; animation: bounce 2s infinite;">🛒</span> About GroceryMS - Customer Edition
+    <span style="display: inline-block; animation: bounce 2s infinite;"></span> About GroceryMS - Customer Edition
   </h3>
   
   <div style="display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0;">
     <div style="flex: 1; min-width: 300px; padding: 20px; background: linear-gradient(145deg, #f8f9fa, #e8f5e9); border-radius: 12px; box-shadow: 0 4px 12px rgba(76, 175, 80, 0.1);">
-      <h4 style="color: #388e3c; margin-top: 0;">🌟 What is GroceryMS?</h4>
+      <h4 style="color: #388e3c; margin-top: 0;">What is GroceryMS?</h4>
       <p>GroceryMS is a powerful, lightweight grocery management system built specifically for educational projects and small businesses. Our file-based architecture makes it incredibly easy to deploy and manage without complex database setups.</p>
     </div>
     
     <div style="flex: 1; min-width: 300px; padding: 20px; background: linear-gradient(145deg, #f8f9fa, #e8f5e9); border-radius: 12px; box-shadow: 0 4px 12px rgba(76, 175, 80, 0.1);">
-      <h4 style="color: #388e3c; margin-top: 0;">🚀 Customer Features</h4>
+      <h4 style="color: #388e3c; margin-top: 0;"> Customer Features</h4>
       <ul style="columns: 2; column-gap: 20px;">
-        <li>🛍️ Easy Shopping</li>
-        <li>❤️ Wishlist</li>
-        <li>📦 Order Tracking</li>
-        <li>⭐ Product Reviews</li>
-        <li>📱 User-Friendly</li>
-        <li>🔒 Secure Payments</li>
-        <li>📊 Order History</li>
-        <li>⚡ Fast Delivery</li>
+        <li> Easy Shopping</li>
+        <li> Wishlist</li>
+        <li> Order Tracking</li>
+        <li> Product Reviews</li>
+        <li> User-Friendly</li>
+        <li>Secure Payments</li>
+        <li>Order History</li>
+        <li>Fast Delivery</li>
       </ul>
     </div>
   </div>
@@ -59,7 +56,7 @@ foreach ($__candidates as $__p) { if (file_exists($__p)) { require_once $__p; br
 
   <div style="text-align: center; margin-top: 30px; padding: 20px; background: #f8f8f8; border-radius: 12px;">
     <p style="margin: 0; font-size: 1.1em;">
-      <strong>Built with ❤️ using PHP, HTML5, CSS3 & JavaScript</strong><br>
+      <strong>Built with  using PHP, HTML5, CSS3 & JavaScript</strong><br>
       <span style="color: #666; font-size: 0.9em;">Perfect for learning web development and inventory management systems</span>
     </p>
   </div>
