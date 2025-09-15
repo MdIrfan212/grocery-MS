@@ -5,8 +5,6 @@ $__candidates = [
     __DIR__ . '/model/compat.php',
     __DIR__ . '/../../model/compat.php',
 ];
-foreach ($__candidates as $__p) { if (file_exists($__p)) { require_once $__p; break; } }
-?>
 <?php
 if ($role !== 'customer') {
     header("Location: dashboard.php?page=home");
@@ -40,8 +38,8 @@ foreach ($products as $product) {
                     </div>
                     <div class="product-info">
                         <h4><?= htmlspecialchars($p['name']) ?></h4>
-                        <div class="product-category"><?= htmlspecialchars($p['category']) ?> → <?= htmlspecialchars($p['subcategory']) ?></div>
-                        <div class="product-price">৳<?= (int)$p['price'] ?></div>
+                        <div class="product-category"><?= htmlspecialchars($p['category']) ?>  <?= htmlspecialchars($p['subcategory']) ?></div>
+                        <div class="product-price"><?= (int)$p['price'] ?></div>
                         <div class="product-stock">Stock: <?= (int)$p['stock'] ?></div>
                         
                         <div style="display: flex; gap: 8px; margin-top: 12px;">
