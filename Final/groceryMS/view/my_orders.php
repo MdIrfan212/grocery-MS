@@ -5,8 +5,6 @@ $__candidates = [
     __DIR__ . '/model/compat.php',
     __DIR__ . '/../../model/compat.php',
 ];
-foreach ($__candidates as $__p) { if (file_exists($__p)) { require_once $__p; break; } }
-?>
 <?php
 if ($role !== 'customer') {
     header("Location: dashboard.php?page=home");
@@ -21,26 +19,27 @@ $customerOrders = array_filter($orders, function($order) use ($name) {
 // Reverse to show newest first
 $customerOrders = array_reverse($customerOrders);
 
-// Order status with better visual representation
+// Order status with better visual representation (without icons)
 function getStatusBadge($status) {
     $statusStyles = [
-        'Processing' => ['color' => '#ff9800', 'icon' => '⏳', 'bg' => '#fff3cd'],
-        'Confirmed' => ['color' => '#2196f3', 'icon' => '✅', 'bg' => '#d1ecf1'],
-        'Packing' => ['color' => '#673ab7', 'icon' => '📦', 'bg' => '#e2e3e5'],
-        'Shipped' => ['color' => '#3f51b5', 'icon' => '🚚', 'bg' => '#d4edda'],
-        'Out for Delivery' => ['color' => '#ff5722', 'icon' => '📦', 'bg' => '#ffe5d6'],
-        'Delivered' => ['color' => '#4caf50', 'icon' => '🏠', 'bg' => '#d4edda'],
-        'Cancelled' => ['color' => '#f44336', 'icon' => '❌', 'bg' => '#f8d7da']
+        'Processing' => ['color' => '#ff9800', 'bg' => '#fff3cd'],
+        'Confirmed' => ['color' => '#2196f3', 'bg' => '#d1ecf1'],
+        'Packing' => ['color' => '#673ab7', 'bg' => '#e2e3e5'],
+        'Shipped' => ['color' => '#3f51b5', 'bg' => '#d4edda'],
+        'Out for Delivery' => ['color' => '#ff5722', 'bg' => '#ffe5d6'],
+        'Delivered' => ['color' => '#4caf50', 'bg' => '#d4edda'],
+        'Cancelled' => ['color' => '#f44336', 'bg' => '#f8d7da']
     ];
     
-    $style = $statusStyles[$status] ?? ['color' => '#9e9e9e', 'icon' => '❓', 'bg' => '#f8f9fa'];
+    $style = $statusStyles[$status] ?? ['color' => '#9e9e9e', 'bg' => '#f8f9fa'];
     
     return '<span style="background: '.$style['bg'].'; color: '.$style['color'].'; 
             padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 500;
             display: inline-flex; align-items: center; gap: 4px;">
-            '.$style['icon'].' '.$status.'</span>';
+            '.$status.'</span>';
 }
 ?>
+
 <style>
 /* Order Card Styles */
 .order-card {
@@ -434,13 +433,12 @@ function getStatusBadge($status) {
 </style>
 
 <div class="panel">
-    <h2 style="margin-bottom: 24px; color: #2c3e50; display: flex; align-items: center; gap: 12px;">
-        <span style="font-size: 1.4em;">📦</span> My Orders
+    <h2 style="margin-bottom: 24px; color: #2c3e50;">
+        My Orders
     </h2>
     
     <?php if (empty($customerOrders)): ?>
         <div class="muted" style="padding: 40px 20px; text-align: center; background: white; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <div style="font-size: 4em; margin-bottom: 20px;">🛒</div>
             <h3 style="color: #6c757d; margin-bottom: 12px;">No orders yet</h3>
             <p style="color: #6c757d; margin-bottom: 24px;">You haven't placed any orders yet. Start shopping to see your orders here.</p>
             <a href="dashboard.php?page=products" class="btn" style="background: #28a745; color: white; padding: 12px 24px;">
@@ -478,7 +476,7 @@ function getStatusBadge($status) {
                     <div class="payment-status">
                         <?php if (!empty($order['paid']) && $order['paid']): ?>
                             <div class="paid-status paid">
-                                <span>✅</span> Paid with <?= htmlspecialchars($order['method'] ?? 'Unknown') ?>
+                                Paid with <?= htmlspecialchars($order['method'] ?? 'Unknown') ?>
                             </div>
                             <?php if (!empty($order['paid_date'])): ?>
                                 <div style="font-size: 0.85em; color: #6c757d;">
@@ -487,7 +485,7 @@ function getStatusBadge($status) {
                             <?php endif; ?>
                         <?php else: ?>
                             <div class="paid-status unpaid">
-                                <span></span> Unpaid
+                                Unpaid
                             </div>
                         <?php endif; ?>
                     </div>
@@ -495,12 +493,12 @@ function getStatusBadge($status) {
                 
                 <div class="order-footer">
                     <a href="dashboard.php?page=order_details&id=<?= htmlspecialchars($order['id']) ?>" class="btn btn-outline">
-                        <span>📋</span> View Details
+                        View Details
                     </a>
                     
                     <?php if (empty($order['paid']) || $order['paid'] == false): ?>
                     <button type="button" onclick="showPaymentOptions('<?= htmlspecialchars($order['id']) ?>')" class="btn btn-primary">
-                        <span>💳</span> Pay Now
+                        Pay Now
                     </button>
                     <?php endif; ?>
                 </div>
@@ -509,7 +507,7 @@ function getStatusBadge($status) {
                 <?php if (!empty($order['status_history'])): ?>
                 <div class="status-history">
                     <div class="status-history-title">
-                        <span>📊</span> Order Journey
+                        Order Journey
                     </div>
                     <div class="status-timeline">
                         <?php foreach ($order['status_history'] as $history): ?>
@@ -530,7 +528,7 @@ function getStatusBadge($status) {
     <?php endif; ?>
 </div>
 
-<!-- Payment Modal -->
+<!-- Payment Modal without icons -->
 <div id="paymentModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -544,22 +542,18 @@ function getStatusBadge($status) {
                 
                 <div class="payment-options">
                     <div class="payment-option" onclick="selectPaymentMethod('Cash')">
-                        <div class="payment-icon">💵</div>
                         <div class="payment-name">Cash on Delivery</div>
                     </div>
                     
                     <div class="payment-option" onclick="selectPaymentMethod('bKash')">
-                        <div class="payment-icon">📱</div>
                         <div class="payment-name">bKash</div>
                     </div>
                     
                     <div class="payment-option" onclick="selectPaymentMethod('Nagad')">
-                        <div class="payment-icon">📱</div>
                         <div class="payment-name">Nagad</div>
                     </div>
                     
                     <div class="payment-option" onclick="selectPaymentMethod('Card')">
-                        <div class="payment-icon">💳</div>
                         <div class="payment-name">Credit/Debit Card</div>
                     </div>
                 </div>
@@ -568,10 +562,10 @@ function getStatusBadge($status) {
                 
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">
-                        <span></span> Confirm Payment
+                        Confirm Payment
                     </button>
                     <button type="button" class="btn btn-secondary" onclick="closePaymentModal()">
-                        <span>Cancel</span> Cancel
+                        Cancel
                     </button>
                 </div>
             </form>
