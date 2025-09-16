@@ -464,14 +464,14 @@ function getStatusBadge($status) {
                             <div class="detail-value"><?= (int)$order['qty'] ?></div>
                             
                             <div class="detail-label">Unit Price:</div>
-                            <div class="detail-value">৳<?= (int)$order['price'] ?></div>
+                            <div class="detail-value"><?= (int)$order['price'] ?></div>
                             
                             <div class="detail-label">Order Date:</div>
                             <div class="detail-value"><?= date("M j, Y", strtotime($order['date'])) ?></div>
                         </div>
                     </div>
                     
-                    <div class="total-price">৳<?= (int)$order['total'] ?></div>
+                    <div class="total-price"><?= (int)$order['total'] ?></div>
                     
                     <div class="payment-status">
                         <?php if (!empty($order['paid']) && $order['paid']): ?>
@@ -502,8 +502,6 @@ function getStatusBadge($status) {
                     </button>
                     <?php endif; ?>
                 </div>
-                
-                <!-- Status History -->
                 <?php if (!empty($order['status_history'])): ?>
                 <div class="status-history">
                     <div class="status-history-title">
@@ -527,8 +525,6 @@ function getStatusBadge($status) {
         </div>
     <?php endif; ?>
 </div>
-
-<!-- Payment Modal without icons -->
 <div id="paymentModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -578,8 +574,6 @@ function showPaymentOptions(orderId) {
     document.getElementById('paymentOrderId').value = orderId;
     document.getElementById('selectedPaymentMethod').value = '';
     document.getElementById('paymentModal').style.display = 'block';
-    
-    // Remove active class from all options
     document.querySelectorAll('.payment-option').forEach(option => {
         option.classList.remove('active');
     });
@@ -592,16 +586,11 @@ function closePaymentModal() {
 function selectPaymentMethod(method) {
     document.getElementById('selectedPaymentMethod').value = method;
     
-    // Remove active class from all options
     document.querySelectorAll('.payment-option').forEach(option => {
         option.classList.remove('active');
     });
-    
-    // Add active class to selected option
     event.currentTarget.classList.add('active');
 }
-
-// Close modal when clicking outside
 window.onclick = function(event) {
     const modal = document.getElementById('paymentModal');
     if (event.target == modal) {
@@ -609,7 +598,6 @@ window.onclick = function(event) {
     }
 }
 
-// Handle form submission
 document.getElementById('paymentForm').addEventListener('submit', function(e) {
     const method = document.getElementById('selectedPaymentMethod').value;
     if (!method) {
