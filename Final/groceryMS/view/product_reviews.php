@@ -96,7 +96,7 @@ $userReview = get_user_review($name, $productId);
     </div>
     <div class="card" style="padding: 25px; margin-bottom: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
         <h3 style="margin: 0 0 20px 0; color: #2c3e50; display: flex; align-items: center; gap: 10px;">
-            <span style="background: #3498db; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px;">✏️</span>
+            <span style="background: #3498db; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px;"></span>
             <?= $userReview ? 'Edit Your Review' : 'Share Your Experience' ?>
         </h3>
         
