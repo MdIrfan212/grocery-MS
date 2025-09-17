@@ -1,5 +1,5 @@
 <?php
-// Auto-added DB bootstrap (keeps your design, replaces JSON with MySQL)
+
 $__candidates = [
     __DIR__ . '/../model/compat.php',
     __DIR__ . '/model/compat.php',
@@ -90,10 +90,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadPath)) {
           $img = $newFilename;
         } else {
-          $notice = "❌ Error uploading image.";
+          $notice = " Error uploading image.";
         }
       } else {
-        $notice = "❌ Invalid file type. Please upload JPG, PNG, or GIF images.";
+        $notice = " Invalid file type. Please upload JPG, PNG, or GIF images.";
       }
     } else {
       // Use the hidden field value if no file was uploaded
@@ -147,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $all[] = ['id' => $id, 'category' => $cat, 'subcategory' => $sub, 'name' => $nameP, 'price' => $price, 'stock' => $stock, 'image' => $img];
     }
     save_json($productsFile, $all);
-    $notice = "✅ Product saved.";
+    $notice = " Product saved.";
   }
 
   // Update product (manager & admin)
@@ -178,9 +178,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($found) {
       save_json($productsFile, $all);
-      $notice = "✅ Product updated.";
+      $notice = " Product updated.";
     } else {
-      $notice = "❌ Product not found.";
+      $notice = " Product not found.";
     }
   }
 
@@ -190,10 +190,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $all = load_json($productsFile);
     $new = array_values(array_filter($all, fn($p) => ($p['id'] ?? '') != $id));  // Use loose comparison
     if (count($new) === count($all)) {
-      $notice = "❌ Product not found.";
+      $notice = " Product not found.";
     } else {
       save_json($productsFile, $new);
-      $notice = "🗑️ Product deleted.";
+      $notice = " Product deleted.";
     }
   }
 
@@ -203,7 +203,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $all = load_json($productsFile);
     $new = array_values(array_filter($all, fn($p) => ($p['category'] ?? '') !== $cat));
     save_json($productsFile, $new);
-    $notice = "🗑️ Category '{$cat}' removed (products deleted).";
+    $notice = " Category '{$cat}' removed (products deleted).";
   }
 
   // Ensure images directory exists
@@ -230,10 +230,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if ($foundIndex === null) {
-      $notice = "❌ Product not found.";
+      $notice = " Product not found.";
     } else {
       if ((int) $products[$foundIndex]['stock'] < $qty) {
-        $notice = "❌ Not enough stock.";
+        $notice = " Not enough stock.";
       } else {
         $products[$foundIndex]['stock'] -= $qty;
         $orders = load_json($ordersFile);
@@ -253,7 +253,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
         save_json($ordersFile, $orders);
         save_json($productsFile, $products);
-        $notice = "🧾 Order placed (Processing).";
+        $notice = " Order placed (Processing).";
       }
     }
   }
@@ -267,7 +267,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       // Use loose comparison for ID matching
       if ($pp['id'] == $id) {
         $pp['stock'] = max(0, (int) $pp['stock'] + $delta);
-        $notice = "🔧 Stock updated.";
+        $notice = " Stock updated.";
         break;
       }
     }
@@ -280,14 +280,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'] ?? '';
     $qty = max(0, (int) ($_POST['qty'] ?? 0));
     if ($qty <= 0) {
-      $notice = "❌ Invalid restock qty.";
+      $notice = " Invalid restock qty.";
     } else {
       $prods = load_json($productsFile);
       foreach ($prods as &$pp) {
         // Use loose comparison for ID matching
         if ($pp['id'] == $id) {
           $pp['stock'] = (int) $pp['stock'] + $qty;
-          $notice = "📦 Restocked +{$qty}.";
+          $notice = " Restocked +{$qty}.";
           break;
         }
       }
@@ -354,9 +354,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($found) {
       save_json($ordersFile, $newOrders);
-      $notice = "🗑️ Order deleted successfully.";
+      $notice = " Order deleted successfully.";
     } else {
-      $notice = "❌ Order not found.";
+      $notice = " Order not found.";
     }
   }
 
@@ -385,11 +385,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($totalPaid >= $o['total']) {
           $o['paid'] = true;
           $o['status'] = 'Completed';
-          $notice = "💳 Full payment received (" . htmlspecialchars($method) . ").";
+          $notice = " Full payment received (" . htmlspecialchars($method) . ").";
         } else {
           $o['paid'] = false;
           $o['status'] = 'Partial Payment';
-          $notice = "💳 Partial payment of ৳" . $amount . " received. Remaining: ৳" . ($o['total'] - $totalPaid);
+          $notice = " Partial payment of ৳" . $amount . " received. Remaining: ৳" . ($o['total'] - $totalPaid);
         }
 
         break;
