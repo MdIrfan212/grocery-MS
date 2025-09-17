@@ -1,5 +1,5 @@
 <?php
-// Auto-added DB bootstrap (keeps your design, replaces JSON with MySQL)
+
 $__candidates = [
     __DIR__ . '/../model/compat.php',
     __DIR__ . '/model/compat.php',
@@ -8,9 +8,6 @@ $__candidates = [
 foreach ($__candidates as $__p) { if (file_exists($__p)) { require_once $__p; break; } }
 ?>
 <?php
-// model/db.php
-// Centralized PDO connection (singleton). Include this file once at app bootstrap (e.g., at the top of each page or a common header).
-// Usage: $pdo = db();
 
 function db() {
     static $pdo = null;
